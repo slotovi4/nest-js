@@ -1,5 +1,5 @@
-import { TopLevelCategory } from '../top-page.model';
+import { ETopLevelCategory } from '../top-page.model';
 
 export class FindTopPageDto {
-	firstCategory: TopLevelCategory;
+	_firstCategory: ETopLevelCategory;
 }

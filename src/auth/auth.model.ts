@@ -1,4 +1,4 @@
 export class AuthModel {
-	email: string;
-	passwordHash: string;
+	_email: string;
+	_passwordHash: string;
 }

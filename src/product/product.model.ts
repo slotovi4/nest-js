@@ -1,17 +1,17 @@
 export class ProductModel {
 	_id: string;
-	image: string;
-	title: string;
-	price: number;
-	oldPrice: number;
-	credit: number;
-	calculatedRating: number;
-	description: string;
-	advantages: string;
-	disAdvantages: string;
-	categories: string[];
-	tags: string;
-	characteristics: {
+	_image: string;
+	_title: string;
+	_price: number;
+	_oldPrice: number;
+	_credit: number;
+	_calculatedRating: number;
+	_description: string;
+	_advantages: string;
+	_disAdvantages: string;
+	_categories: string[];
+	_tags: string;
+	_characteristics: {
 		[key: string]: string;
 	};
 }
