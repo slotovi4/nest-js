@@ -1,4 +1,4 @@
 export class AuthDto {
-	_login: string;
-	_password: string;
+	login: string;
+	password: string;
 }
