@@ -1,5 +1,7 @@
 import { prop } from '@typegoose/typegoose';
 
+import { Types } from 'mongoose';
+
 import type { Base } from '@typegoose/typegoose/lib/defaultClasses';
 
 export class ReviewModel implements Base {
@@ -17,7 +19,7 @@ export class ReviewModel implements Base {
 	rating: number;
 
 	@prop()
-	createdAt: Date;
+	productId: Types.ObjectId;
 
 	_id: Base['_id'];
 	id: string;
