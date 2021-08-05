@@ -1,17 +1,54 @@
-export class ProductModel {
-	_id: string;
-	_image: string;
-	_title: string;
-	_price: number;
-	_oldPrice: number;
-	_credit: number;
-	_calculatedRating: number;
-	_description: string;
-	_advantages: string;
-	_disAdvantages: string;
-	_categories: string[];
-	_tags: string;
-	_characteristics: {
-		[key: string]: string;
-	};
+import { prop } from '@typegoose/typegoose';
+
+import type { Base } from '@typegoose/typegoose/lib/defaultClasses';
+
+class ProductCharacteristic {
+
+	@prop()
+	name: string;
+
+	@prop()
+	value: string;
+}
+
+export class ProductModel implements Base {
+
+	@prop()
+	image: string;
+
+	@prop()
+	title: string;
+
+	@prop()
+	price: number;
+
+	@prop()
+	oldPrice: number;
+
+	@prop()
+	credit: number;
+
+	@prop()
+	calculatedRating: number;
+
+	@prop()
+	description: string;
+
+	@prop()
+	advantages: string;
+
+	@prop()
+	disAdvantages: string;
+
+	@prop({ type: () => [String] })
+	categories: string[];
+
+	@prop({ type: () => [String] })
+	tags: string[];
+
+	@prop({ type: () => [ProductCharacteristic], _id: false })
+	characteristics: ProductCharacteristic[];
+
+	_id: Base['_id'];
+	id: string;
 }
