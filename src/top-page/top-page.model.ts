@@ -1,3 +1,31 @@
+import { prop } from '@typegoose/typegoose';
+
+import type { Base } from '@typegoose/typegoose/lib/defaultClasses';
+
+export class HHData {
+
+	@prop()
+	count: number;
+
+	@prop()
+	juniorSalary: number;
+
+	@prop()
+	middleSalary: number;
+
+	@prop()
+	seniorSalary: number;
+}
+
+export class TopPageAdvantage {
+
+	@prop()
+	title: string;
+
+	@prop()
+	description: string;
+}
+
 export enum ETopLevelCategory {
 	Courses,
 	Services,
@@ -5,23 +33,39 @@ export enum ETopLevelCategory {
 	Products
 }
 
-export class TopPageModel {
-	_id: string;
-	_firstCategory: ETopLevelCategory;
-	_secondCategory: string;
-	_title: string;
-	_category: string;
-	_hh?: {
-		count: number;
-		juniorSalary: number;
-		middleSalary: number;
-		seniorSalary: number;
-	};
-	_advantages: {
-		title: string;
-		description: string;
-	}[];
-	_seoText: string;
-	_tagsTitle: string;
-	_tags: string[];
+export class TopPageModel implements Base {
+
+	@prop({ enum: ETopLevelCategory })
+	firstCategory: ETopLevelCategory;
+
+	@prop()
+	secondCategory: string;
+
+	@prop({ unique: true })
+	alias: string;
+
+	@prop()
+	title: string;
+
+	@prop()
+	category: string;
+
+
+	@prop({ type: () => HHData })
+	hh?: HHData;
+
+	@prop({ type: () => [TopPageAdvantage] })
+	advantages: TopPageAdvantage[];
+
+	@prop()
+	seoText: string;
+
+	@prop()
+	tagsTitle: string;
+
+	@prop({ type: () => [String] })
+	tags: string[];
+
+	_id: Base['_id'];
+	id: string;
 }
