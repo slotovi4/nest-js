@@ -2,7 +2,7 @@ import { prop } from '@typegoose/typegoose';
 
 import type { Base } from '@typegoose/typegoose/lib/defaultClasses';
 
-export class AuthModel implements Base {
+export class UserModel implements Base {
 	@prop({ unique: true })
 	email: string;
 
