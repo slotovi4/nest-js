@@ -4,7 +4,20 @@ import { ReviewService } from './review.service';
 
 import { REVIEW_NOT_FOUND_MESSAGE } from './review.constants';
 
-import { Post, Controller, Body, Delete, Param, Get, HttpException, HttpStatus, UsePipes, ValidationPipe } from '@nestjs/common';
+import {
+	Post,
+	Controller,
+	Body,
+	Delete,
+	Param,
+	Get,
+	HttpException,
+	HttpStatus,
+	UsePipes,
+	ValidationPipe,
+	UseGuards
+} from '@nestjs/common';
+import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 
 @Controller('review')
 export class ReviewController {
@@ -18,6 +31,7 @@ export class ReviewController {
 		return this.reviewService.create(dto);
 	}
 
+	@UseGuards(JwtAuthGuard)
 	@Delete(':id')
 	public async delete(@Param('id') id: string) {
 		const deletedDoc = await this.reviewService.delete(id);
