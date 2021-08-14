@@ -13,10 +13,16 @@ import type { CreateReviewDto } from 'src/review/dto/createreview.dto';
 
 import type { INestApplication } from '@nestjs/common';
 import type { TestingModule } from '@nestjs/testing';
+import type { AuthDto } from 'src/auth/dto/auth.dto';
 
 const createUniqueId = () => new Types.ObjectId().toHexString();
 
 const productId = createUniqueId();
+
+const loginDto: AuthDto = {
+	login: 'admin',
+	password: '123'
+};
 
 const testDto: CreateReviewDto = {
 	name: 'Тест',
@@ -29,6 +35,7 @@ const testDto: CreateReviewDto = {
 describe('AppController (e2e)', () => {
 	let app: INestApplication;
 	let createdId: string;
+	let authToken: string;
 
 	beforeEach(async () => {
 		const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -37,6 +44,10 @@ describe('AppController (e2e)', () => {
 
 		app = moduleFixture.createNestApplication();
 		await app.init();
+
+		const { body } = await request(app.getHttpServer()).post('/auth/login').send(loginDto);
+
+		authToken = body.access_token;
 	});
 
 	afterAll(() => {
@@ -86,12 +97,14 @@ describe('AppController (e2e)', () => {
 	it('/review/:id (DELETE) - success', () => {
 		return request(app.getHttpServer())
 			.delete(`/review/${createdId}`)
+			.set('Authorization', `Bearer ${authToken}`)
 			.expect(HttpStatus.OK);
 	});
 
 	it('/review/:id (DELETE) - fail', () => {
 		return request(app.getHttpServer())
 			.delete(`/review/${createUniqueId()}`)
+			.set('Authorization', `Bearer ${authToken}`)
 			.expect(HttpStatus.NOT_FOUND, {
 				statusCode: HttpStatus.NOT_FOUND,
 				message: REVIEW_NOT_FOUND_MESSAGE
