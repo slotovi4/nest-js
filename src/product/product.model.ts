@@ -1,8 +1,9 @@
 import { prop } from '@typegoose/typegoose';
 
 import type { Base } from '@typegoose/typegoose/lib/defaultClasses';
+import type { IProductCharacteristic } from './dto/createProduct.dto';
 
-class ProductCharacteristic {
+class ProductCharacteristic implements IProductCharacteristic {
 
 	@prop()
 	name: string;
@@ -23,13 +24,10 @@ export class ProductModel implements Base {
 	price: number;
 
 	@prop()
-	oldPrice: number;
+	oldPrice?: number;
 
 	@prop()
 	credit: number;
-
-	@prop()
-	calculatedRating: number;
 
 	@prop()
 	description: string;
