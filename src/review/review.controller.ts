@@ -4,9 +4,10 @@ import { ReviewService } from './review.service';
 
 import { REVIEW_NOT_FOUND_MESSAGE } from './review.constants';
 
-import { JwtAuthGuard } from '../../src/auth/guards/jwt.guard';
+import { UserEmail } from 'src/decorators/userEmail.decorator';
 
-import { UserEmail } from '../../src/decorators/userEmail.decorator';
+import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
+
 
 import {
 	Post,
