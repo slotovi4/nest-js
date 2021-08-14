@@ -2,11 +2,17 @@ import { AppModule } from './../src/app.module';
 
 import { REVIEW_NOT_FOUND_MESSAGE } from '../src/review/review.constants';
 
-import { Test, TestingModule } from '@nestjs/testing';
-import { HttpStatus, INestApplication } from '@nestjs/common';
-import { CreateReviewDto } from 'src/review/dto/createreview.dto';
+import { Test } from '@nestjs/testing';
+import { HttpStatus } from '@nestjs/common';
+
 import { Types, disconnect } from 'mongoose';
+
 import * as request from 'supertest';
+
+import type { CreateReviewDto } from 'src/review/dto/createreview.dto';
+
+import type { INestApplication } from '@nestjs/common';
+import type { TestingModule } from '@nestjs/testing';
 
 const createUniqueId = () => new Types.ObjectId().toHexString();
 
