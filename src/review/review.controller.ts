@@ -4,9 +4,11 @@ import { ReviewService } from './review.service';
 
 import { REVIEW_NOT_FOUND_MESSAGE } from './review.constants';
 
-import { UserEmail } from 'src/decorators/userEmail.decorator';
+import { UserEmail } from '../decorators/userEmail.decorator';
 
-import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
+import { JwtAuthGuard } from '../auth/guards/jwt.guard';
+
+import { IdValidationPipe } from '../pises';
 
 import {
 	Post,
@@ -21,7 +23,6 @@ import {
 	ValidationPipe,
 	UseGuards
 } from '@nestjs/common';
-import { IdValidationPipe } from 'src/pises';
 
 @Controller('review')
 export class ReviewController {

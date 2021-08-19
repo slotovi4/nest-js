@@ -5,8 +5,9 @@ import { PRODUCT_NOT_FOUND_ERROR_MESSAGE } from './product.constants';
 
 import { ProductService } from './product.service';
 
+import { IdValidationPipe } from '../pises';
+
 import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
-import { IdValidationPipe } from 'src/pises';
 
 
 @Controller('product')

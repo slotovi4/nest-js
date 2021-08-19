@@ -1,4 +1,4 @@
-import { AppModule } from './../src/app.module';
+import { AppModule } from '../src/app.module';
 
 import {
 	ALREADY_REGISTERED_ERROR_MESSAGE,
@@ -15,7 +15,7 @@ import * as request from 'supertest';
 
 import type { INestApplication } from '@nestjs/common';
 import type { TestingModule } from '@nestjs/testing';
-import type { AuthDto } from 'src/auth/dto/auth.dto';
+import type { AuthDto } from '../src/auth/dto/auth.dto';
 
 const existLoginDto: AuthDto = {
 	login: 'admin',
