@@ -1,6 +1,8 @@
 import { AppModule } from '../src/app.module';
 import { REVIEW_NOT_FOUND_MESSAGE } from '../src/review/review.constants';
 
+import { ID_VALIDATION_ERROR_MESSAGE } from '../src/pises';
+
 import { Test } from '@nestjs/testing';
 import { HttpStatus } from '@nestjs/common';
 import { Types, disconnect } from 'mongoose';
@@ -14,6 +16,7 @@ import type { AuthDto } from '../src/auth/dto/auth.dto';
 const createUniqueId = () => new Types.ObjectId().toHexString();
 
 const productId = createUniqueId();
+const incorrectId = `${createUniqueId()}incorrectId`;
 
 const loginDto: AuthDto = {
 	login: 'admin',
@@ -90,6 +93,15 @@ describe('ReviewController (e2e)', () => {
 			});
 	});
 
+	it('review/byProduct/:productId (GET) - incorrect id', async () => {
+		return request(app.getHttpServer())
+			.get(`/review/byProduct/${incorrectId}`)
+			.expect(HttpStatus.BAD_REQUEST, {
+				statusCode: HttpStatus.BAD_REQUEST,
+				message: ID_VALIDATION_ERROR_MESSAGE
+			});
+	});
+
 	it('/review/:id (DELETE) - success', () => {
 		return request(app.getHttpServer())
 			.delete(`/review/${createdId}`)
@@ -104,6 +116,16 @@ describe('ReviewController (e2e)', () => {
 			.expect(HttpStatus.NOT_FOUND, {
 				statusCode: HttpStatus.NOT_FOUND,
 				message: REVIEW_NOT_FOUND_MESSAGE
+			});
+	});
+
+	it('/review/:id (DELETE) - fail incorrect id', () => {
+		return request(app.getHttpServer())
+			.delete(`/review/${incorrectId}`)
+			.set('Authorization', `Bearer ${authToken}`)
+			.expect(HttpStatus.BAD_REQUEST, {
+				statusCode: HttpStatus.BAD_REQUEST,
+				message: ID_VALIDATION_ERROR_MESSAGE
 			});
 	});
 });
