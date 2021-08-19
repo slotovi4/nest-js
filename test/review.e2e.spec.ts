@@ -7,7 +7,7 @@ import { HttpStatus } from '@nestjs/common';
 import { Types, disconnect } from 'mongoose';
 import * as request from 'supertest';
 
-import type { CreateReviewDto } from '../src/review/dto/createreview.dto';
+import type { CreateReviewDto } from '../src/review/dto';
 import type { INestApplication } from '@nestjs/common';
 import type { TestingModule } from '@nestjs/testing';
 import type { AuthDto } from '../src/auth/dto';

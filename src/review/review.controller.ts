@@ -1,13 +1,8 @@
-import { CreateReviewDto } from './dto/createreview.dto';
-
 import { ReviewService } from './review.service';
-
 import { REVIEW_NOT_FOUND_MESSAGE } from './review.constants';
 
 import { UserEmail } from '../decorators/userEmail.decorator';
-
 import { JwtAuthGuard } from '../auth/guards/jwt.guard';
-
 import { IdValidationPipe } from '../pises';
 
 import {
@@ -23,6 +18,8 @@ import {
 	ValidationPipe,
 	UseGuards
 } from '@nestjs/common';
+
+import type { CreateReviewDto } from './dto';
 
 @Controller('review')
 export class ReviewController {
