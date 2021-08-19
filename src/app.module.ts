@@ -1,7 +1,7 @@
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
-import { TopPageModule } from './top-page/top-page.module';
+import { TopPageModule } from './topPage/topPage.module';
 import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
 

@@ -1,5 +1,5 @@
-import { FindTopPageDto } from './dto/find-top-page.dto';
-import { TopPageModel } from './top-page.model';
+import { FindTopPageDto } from './dto/findTopPage.dto';
+import { TopPageModel } from './topPage.model';
 
 import { Controller, Post, Body, Delete, Patch, HttpCode, Param, Get } from '@nestjs/common';
 
