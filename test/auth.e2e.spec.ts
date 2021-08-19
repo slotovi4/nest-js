@@ -12,7 +12,7 @@ import * as request from 'supertest';
 
 import type { INestApplication } from '@nestjs/common';
 import type { TestingModule } from '@nestjs/testing';
-import type { AuthDto } from '../src/auth/dto/auth.dto';
+import type { AuthDto } from '../src/auth/dto';
 
 const existLoginDto: AuthDto = {
 	login: 'admin',

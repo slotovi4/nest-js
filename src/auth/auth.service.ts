@@ -1,4 +1,4 @@
-import { AuthDto } from './dto/auth.dto';
+import { AuthDto } from './dto';
 
 import { UserModel } from './user.model';
 
