@@ -65,7 +65,6 @@ describe('AuthController (e2e)', () => {
 			.expect(HttpStatus.UNAUTHORIZED, {
 				statusCode: HttpStatus.UNAUTHORIZED,
 				message: WRONG_PASSWORD_ERROR_MESSAGE,
-				error: 'Unauthorized'
 			});
 	});
 
@@ -76,7 +75,6 @@ describe('AuthController (e2e)', () => {
 			.expect(HttpStatus.UNAUTHORIZED, {
 				statusCode: HttpStatus.UNAUTHORIZED,
 				message: USER_NOT_FOUND_ERROR_MESSAGE,
-				error: 'Unauthorized'
 			});
 	});
 
@@ -87,7 +85,6 @@ describe('AuthController (e2e)', () => {
 			.expect(HttpStatus.BAD_REQUEST, {
 				statusCode: HttpStatus.BAD_REQUEST,
 				message: ALREADY_REGISTERED_ERROR_MESSAGE,
-				error: 'Bad Request'
 			});
 	});
 });
