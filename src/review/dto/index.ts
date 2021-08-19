@@ -1,1 +1,1 @@
-export type { CreateReviewDto } from './createReview.dto';
+export { CreateReviewDto } from './createReview.dto';

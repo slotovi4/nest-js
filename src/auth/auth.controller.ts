@@ -1,5 +1,6 @@
 import { AuthService } from './auth.service';
 import { ALREADY_REGISTERED_ERROR_MESSAGE } from './auth.constants';
+import { AuthDto } from './dto';
 
 import {
 	Controller,
@@ -11,8 +12,6 @@ import {
 	HttpException,
 	HttpStatus
 } from '@nestjs/common';
-
-import type { AuthDto } from './dto';
 
 @Controller('auth')
 export class AuthController {

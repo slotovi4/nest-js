@@ -2,6 +2,8 @@ import { ProductModel } from './product.model';
 import { PRODUCT_NOT_FOUND_ERROR_MESSAGE } from './product.constants';
 import { ProductService } from './product.service';
 
+import { FindProductDto, CreateProductDto } from './dto';
+
 import { IdValidationPipe } from '../pises';
 
 import {
@@ -19,7 +21,6 @@ import {
 	HttpStatus
 } from '@nestjs/common';
 
-import type { FindProductDto, CreateProductDto } from './dto';
 
 @Controller('product')
 export class ProductController {

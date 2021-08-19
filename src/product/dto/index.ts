@@ -1,2 +1,3 @@
-export type { CreateProductDto, IProductCharacteristic } from './createProduct.dto';
-export type { FindProductDto } from './findProduct.dto';
+export { CreateProductDto } from './createProduct.dto';
+export { FindProductDto } from './findProduct.dto';
+export type { IProductCharacteristic } from './createProduct.dto';
