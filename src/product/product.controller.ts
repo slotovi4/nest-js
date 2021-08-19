@@ -1,6 +1,4 @@
-import { FindProductDto } from './dto/findProduct.dto';
 import { ProductModel } from './product.model';
-import { CreateProductDto } from './dto/createProduct.dto';
 import { PRODUCT_NOT_FOUND_ERROR_MESSAGE } from './product.constants';
 import { ProductService } from './product.service';
 
@@ -20,6 +18,8 @@ import {
 	ValidationPipe,
 	HttpStatus
 } from '@nestjs/common';
+
+import type { FindProductDto, CreateProductDto } from './dto';
 
 @Controller('product')
 export class ProductController {

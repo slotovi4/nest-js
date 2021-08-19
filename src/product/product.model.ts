@@ -1,7 +1,7 @@
 import { prop } from '@typegoose/typegoose';
 
 import type { Base } from '@typegoose/typegoose/lib/defaultClasses';
-import type { IProductCharacteristic } from './dto/createProduct.dto';
+import type { IProductCharacteristic } from './dto';
 
 class ProductCharacteristic implements IProductCharacteristic {
 
