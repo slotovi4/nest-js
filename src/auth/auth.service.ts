@@ -4,7 +4,7 @@ import { UserModel } from './user.model';
 
 import { USER_NOT_FOUND_ERROR_MESSAGE, WRONG_PASSWORD_ERROR_MESSAGE } from './auth.constants';
 
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { ModelType } from '@typegoose/typegoose/lib/types';
 import { InjectModel } from 'nestjs-typegoose';
 import { genSalt, hash, compare } from 'bcryptjs';
@@ -37,13 +37,13 @@ export class AuthService {
 		const user = await this.findUser(email);
 
 		if (!user) {
-			throw new UnauthorizedException(USER_NOT_FOUND_ERROR_MESSAGE);
+			throw new HttpException(USER_NOT_FOUND_ERROR_MESSAGE, HttpStatus.UNAUTHORIZED);
 		}
 
 		const isCorrectPassword = await compare(password, user.passwordHash);
 
 		if (!isCorrectPassword) {
-			throw new UnauthorizedException(WRONG_PASSWORD_ERROR_MESSAGE);
+			throw new HttpException(WRONG_PASSWORD_ERROR_MESSAGE, HttpStatus.UNAUTHORIZED);
 		}
 
 		return {

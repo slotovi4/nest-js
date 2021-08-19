@@ -7,8 +7,7 @@ import { ProductService } from './product.service';
 
 import { IdValidationPipe } from '../pises';
 
-import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
-
+import { Body, Controller, Delete, Get, HttpCode, HttpException, Param, Patch, Post, UsePipes, ValidationPipe, HttpStatus } from '@nestjs/common';
 
 @Controller('product')
 export class ProductController {
@@ -26,7 +25,7 @@ export class ProductController {
 		const product = await this.productService.findById(id);
 
 		if (!product) {
-			throw new NotFoundException(PRODUCT_NOT_FOUND_ERROR_MESSAGE);
+			throw new HttpException(PRODUCT_NOT_FOUND_ERROR_MESSAGE, HttpStatus.NOT_FOUND);
 		}
 
 		return product;
@@ -37,7 +36,7 @@ export class ProductController {
 		const deletedProduct = await this.productService.deleteById(id);
 
 		if (!deletedProduct) {
-			throw new NotFoundException(PRODUCT_NOT_FOUND_ERROR_MESSAGE);
+			throw new HttpException(PRODUCT_NOT_FOUND_ERROR_MESSAGE, HttpStatus.NOT_FOUND);
 		}
 	}
 
@@ -46,7 +45,7 @@ export class ProductController {
 		const updatedProduct = await this.productService.updateById(id, dto);
 
 		if (!updatedProduct) {
-			throw new NotFoundException(PRODUCT_NOT_FOUND_ERROR_MESSAGE);
+			throw new HttpException(PRODUCT_NOT_FOUND_ERROR_MESSAGE, HttpStatus.NOT_FOUND);
 		}
 
 		return updatedProduct;

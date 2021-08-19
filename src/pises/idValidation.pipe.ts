@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import { ID_VALIDATION_ERROR_MESSAGE } from './idValidation.constants';
 
-import { BadRequestException, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 
 import { Types } from 'mongoose';
 
@@ -15,7 +15,7 @@ export class IdValidationPipe implements PipeTransform {
 		}
 
 		if (!Types.ObjectId.isValid(value)) {
-			throw new BadRequestException(ID_VALIDATION_ERROR_MESSAGE);
+			throw new HttpException(ID_VALIDATION_ERROR_MESSAGE, HttpStatus.BAD_REQUEST);
 		}
 
 		return value;

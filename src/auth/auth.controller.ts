@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 
 import { ALREADY_REGISTERED_ERROR_MESSAGE } from './auth.constants';
 
-import { Controller, HttpCode, Post, Body, UsePipes, ValidationPipe, BadRequestException } from '@nestjs/common';
+import { Controller, HttpCode, Post, Body, UsePipes, ValidationPipe, HttpException, HttpStatus } from '@nestjs/common';
 
 @Controller('auth')
 export class AuthController {
@@ -18,7 +18,7 @@ export class AuthController {
 		const oldUser = await this.authService.findUser(dto.login);
 
 		if (oldUser) {
-			throw new BadRequestException(ALREADY_REGISTERED_ERROR_MESSAGE);
+			throw new HttpException(ALREADY_REGISTERED_ERROR_MESSAGE, HttpStatus.BAD_REQUEST);
 		}
 
 		return this.authService.createUser(dto);
