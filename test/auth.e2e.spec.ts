@@ -1,16 +1,13 @@
-import { AppModule } from '../src/app.module';
-
 import {
 	ALREADY_REGISTERED_ERROR_MESSAGE,
 	USER_NOT_FOUND_ERROR_MESSAGE,
 	WRONG_PASSWORD_ERROR_MESSAGE
 } from '../src/auth/auth.constants';
+import { AppModule } from '../src/app.module';
 
 import { Test } from '@nestjs/testing';
 import { HttpStatus } from '@nestjs/common';
-
 import { disconnect } from 'mongoose';
-
 import * as request from 'supertest';
 
 import type { INestApplication } from '@nestjs/common';
