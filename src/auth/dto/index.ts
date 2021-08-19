@@ -1,1 +1,1 @@
-export { AuthDto } from './auth.dto';
+export type { AuthDto } from './auth.dto';

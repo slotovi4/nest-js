@@ -1,7 +1,4 @@
-import { AuthDto } from './dto';
-
 import { UserModel } from './user.model';
-
 import { USER_NOT_FOUND_ERROR_MESSAGE, WRONG_PASSWORD_ERROR_MESSAGE } from './auth.constants';
 
 import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
@@ -9,6 +6,8 @@ import { ModelType } from '@typegoose/typegoose/lib/types';
 import { InjectModel } from 'nestjs-typegoose';
 import { genSalt, hash, compare } from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
+
+import type { AuthDto } from './dto';
 
 @Injectable()
 export class AuthService {
