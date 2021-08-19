@@ -5,7 +5,7 @@ import { InjectModel } from 'nestjs-typegoose';
 
 import type { CreateProductDto } from './dto/createProduct.dto';
 import type { ModelType } from '@typegoose/typegoose/lib/types';
-import type { FindProductDto } from './dto/find-product.dto';
+import type { FindProductDto } from './dto/findProduct.dto';
 import type { ReviewModel } from '../../src/review/review.model';
 
 @Injectable()

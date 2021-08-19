@@ -1,13 +1,25 @@
-import { FindProductDto } from './dto/find-product.dto';
+import { FindProductDto } from './dto/findProduct.dto';
 import { ProductModel } from './product.model';
 import { CreateProductDto } from './dto/createProduct.dto';
 import { PRODUCT_NOT_FOUND_ERROR_MESSAGE } from './product.constants';
-
 import { ProductService } from './product.service';
 
 import { IdValidationPipe } from '../pises';
 
-import { Body, Controller, Delete, Get, HttpCode, HttpException, Param, Patch, Post, UsePipes, ValidationPipe, HttpStatus } from '@nestjs/common';
+import {
+	Body,
+	Controller,
+	Delete,
+	Get,
+	HttpCode,
+	HttpException,
+	Param,
+	Patch,
+	Post,
+	UsePipes,
+	ValidationPipe,
+	HttpStatus
+} from '@nestjs/common';
 
 @Controller('product')
 export class ProductController {
