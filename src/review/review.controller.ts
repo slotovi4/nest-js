@@ -8,7 +8,6 @@ import { UserEmail } from 'src/decorators/userEmail.decorator';
 
 import { JwtAuthGuard } from 'src/auth/guards/jwt.guard';
 
-
 import {
 	Post,
 	Controller,
@@ -22,6 +21,7 @@ import {
 	ValidationPipe,
 	UseGuards
 } from '@nestjs/common';
+import { IdValidationPipe } from 'src/pises';
 
 @Controller('review')
 export class ReviewController {
@@ -37,7 +37,7 @@ export class ReviewController {
 
 	@UseGuards(JwtAuthGuard)
 	@Delete(':id')
-	public async delete(@Param('id') id: string, @UserEmail() email: string) {
+	public async delete(@Param('id', IdValidationPipe) id: string, @UserEmail() email: string) {
 		const deletedDoc = await this.reviewService.delete(id);
 
 		console.log(email);
@@ -48,7 +48,7 @@ export class ReviewController {
 	}
 
 	@Get('byProduct/:productId')
-	public async getByProduct(@Param('productId') productId: string) {
+	public async getByProduct(@Param('productId', IdValidationPipe) productId: string) {
 		return this.reviewService.findByProductId(productId);
 	}
 }

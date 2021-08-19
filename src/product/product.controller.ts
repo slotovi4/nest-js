@@ -6,6 +6,7 @@ import { PRODUCT_NOT_FOUND_ERROR_MESSAGE } from './product.constants';
 import { ProductService } from './product.service';
 
 import { Body, Controller, Delete, Get, HttpCode, NotFoundException, Param, Patch, Post, UsePipes, ValidationPipe } from '@nestjs/common';
+import { IdValidationPipe } from 'src/pises';
 
 
 @Controller('product')
@@ -20,7 +21,7 @@ export class ProductController {
 	}
 
 	@Get(':id')
-	public async get(@Param('id') id: string) {
+	public async get(@Param('id', IdValidationPipe) id: string) {
 		const product = await this.productService.findById(id);
 
 		if (!product) {
@@ -31,7 +32,7 @@ export class ProductController {
 	}
 
 	@Delete(':id')
-	public async delete(@Param('id') id: string) {
+	public async delete(@Param('id', IdValidationPipe) id: string) {
 		const deletedProduct = await this.productService.deleteById(id);
 
 		if (!deletedProduct) {
@@ -40,7 +41,7 @@ export class ProductController {
 	}
 
 	@Patch(':id')
-	public async patch(@Param('id') id: string, @Body() dto: ProductModel) {
+	public async patch(@Param('id', IdValidationPipe) id: string, @Body() dto: ProductModel) {
 		const updatedProduct = await this.productService.updateById(id, dto);
 
 		if (!updatedProduct) {
