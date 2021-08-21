@@ -50,7 +50,6 @@ export class TopPageModel implements Base {
 	@prop()
 	category: string;
 
-
 	@prop({ type: () => HHData })
 	hh?: HHData;
 
