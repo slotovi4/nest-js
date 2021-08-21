@@ -34,38 +34,28 @@ export class ProductService {
 		const newReviewCountField = 'reviewCount';
 		const newReviewAvgField = 'reviewAvg';
 
-		return this.productModel.aggregate([
-			{
-				$match: {
-					categories: category
-				}
-			},
-			{
-				$sort: {
-					_id: 1
-				}
-			},
-			{
-				$limit: limit
-			},
-			{
-				$lookup: {
-					from: 'Review',
-					localField: '_id',
-					foreignField: 'productId',
-					as: newReviewField
-				}
-			},
-			{
-				$addFields: {
-					[newReviewCountField]: { $size: `$${newReviewField}` },
-					[newReviewAvgField]: { $avg: `$${newReviewField}.rating` }
-				}
-			}
-		]).exec() as (ProductModel & {
-			[newReviewField]: ReviewModel[];
-			[newReviewCountField]: number;
-			[newReviewAvgField]: number;
-		})[];
+		return this.productModel.aggregate()
+			.match({
+				categories: category,
+			})
+			.sort({
+				_id: 1
+			})
+			.limit(limit)
+			.lookup({
+				from: 'Review',
+				localField: '_id',
+				foreignField: 'productId',
+				as: newReviewField
+			})
+			.addFields({
+				[newReviewCountField]: { $size: `$${newReviewField}` },
+				[newReviewAvgField]: { $avg: `$${newReviewField}.rating` }
+			})
+			.exec() as (ProductModel & {
+				[newReviewField]: ReviewModel[];
+				[newReviewCountField]: number;
+				[newReviewAvgField]: number;
+			})[];
 	}
 }
