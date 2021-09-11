@@ -4,8 +4,8 @@ import { AuthModule } from './auth/auth.module';
 import { TopPageModule } from './topPage/topPage.module';
 import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
-
 import { getMongoConfig } from './configs/mongo.config';
+import { FilesModule } from './files/files.module';
 
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -22,7 +22,8 @@ import { TypegooseModule } from 'nestjs-typegoose';
 		AuthModule,
 		TopPageModule,
 		ProductModule,
-		ReviewModule
+		ReviewModule,
+		FilesModule
 	],
 	controllers: [AppController],
 	providers: [AppService],
