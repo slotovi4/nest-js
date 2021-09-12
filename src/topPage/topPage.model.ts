@@ -62,6 +62,9 @@ export class TopPageModel implements Base {
 	@prop()
 	tagsTitle: string;
 
+	@prop()
+	updatedAt?: string;
+
 	@prop({ type: () => [String] })
 	tags: string[];
 

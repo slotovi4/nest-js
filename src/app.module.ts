@@ -6,6 +6,7 @@ import { ProductModule } from './product/product.module';
 import { ReviewModule } from './review/review.module';
 import { getMongoConfig } from './configs/mongo.config';
 import { FilesModule } from './files/files.module';
+import { SitemapModule } from './sitemap/sitemap.module';
 
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
@@ -23,7 +24,8 @@ import { TypegooseModule } from 'nestjs-typegoose';
 		TopPageModule,
 		ProductModule,
 		ReviewModule,
-		FilesModule
+		FilesModule,
+		SitemapModule
 	],
 	controllers: [AppController],
 	providers: [AppService],
