@@ -1,10 +1,10 @@
 /* eslint-disable class-methods-use-this */
 import { FileElementResponse } from './dto/file-element.response';
 import { MFile } from './mfile.class';
+import { rootPath } from './files.constants';
 
 import { Injectable } from '@nestjs/common';
 import { format } from 'date-fns';
-import { path } from 'app-root-path';
 import { ensureDir, writeFile } from 'fs-extra';
 import * as sharp from 'sharp';
 
@@ -12,7 +12,7 @@ import * as sharp from 'sharp';
 export class FilesService {
 	public async saveFiles(files: MFile[]): Promise<FileElementResponse[]> {
 		const dateFolder = format(new Date(), 'yyyy-MM-dd');
-		const uploadFolder = `${path}/uploads/${dateFolder}`;
+		const uploadFolder = `${rootPath}/${dateFolder}`;
 
 		await ensureDir(uploadFolder);
 
