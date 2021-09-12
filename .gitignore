@@ -3,6 +3,7 @@
 /node_modules
 docker/mongo-data-4.4
 yarn.lock
+/uploads
 
 # Logs
 logs
